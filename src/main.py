@@ -19,6 +19,7 @@ def loadConfig():
     with open('config.json', 'r', encoding='utf-8') as f:
         config = f.read()
     configJson = json.loads(config)
+    print(configJson)
     global sendAddress, emailPsw, receiveAddress, username, psw
     sendAddress = configJson['sendAddress']
     emailPsw = configJson['emailPsw']
@@ -149,6 +150,7 @@ if __name__ == '__main__':
     s.post('https://ids.xmu.edu.cn/authserver/login?service=https://xmuxg.xmu.edu.cn/login/cas/xmu', data=body,
            headers=headers)
     r1 = s.get('https://xmuxg.xmu.edu.cn/api/app/214/business/now?getFirst=true', headers=headers)
+    print(r1.text)
     businessId = r1.json()['data'][0]['business']['id']
     businessId = businessId
     # 获得框架
