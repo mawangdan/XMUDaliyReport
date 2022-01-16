@@ -1,11 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Dailyreport
 
 # Controls when the workflow will run
 on:
   push:
-
+  schedule:
+    - cron: '* * * *'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -36,7 +37,7 @@ jobs:
           SENDADDRESS: ${{ secrets.SENDADDRESS }}
           USERNAME: ${{ secrets.USERNAME }}
           CONFIG: ${{ secrets.CONFIG }}
-        run: echo $CONFIG > ./src/config.json&&cat ./src/config.json
+        run: echo $CONFIG > ./src/config.json
     
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
