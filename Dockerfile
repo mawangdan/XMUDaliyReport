@@ -1,5 +1,5 @@
 # 基于镜像基础
-FROM python:3.8.8-alpine3.13
+FROM python:3.8.8
 
 # 安装node,保证环境中有JS环境
 RUN wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
