@@ -1,5 +1,5 @@
 # 基于镜像基础
-FROM python:3.8-alpine
+FROM python:3.8.0
 
 
 # 安装node,保证环境中有JS环境
