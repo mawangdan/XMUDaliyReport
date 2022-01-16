@@ -28,6 +28,16 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
+      - name: 'Install config'
+        env:
+          EMAILPSW: ${{ secrets.EMAILPSW }}
+          PSW: ${{ secrets.PSW }}
+          RECEIVEADDRESS: ${{ secrets.RECEIVEADDRESS }}
+          SENDADDRESS: ${{ secrets.SENDADDRESS }}
+          USERNAME: ${{ secrets.USERNAME }}
+          CONFIG: ${{ secrets.CONFIG }}
+        run: echo $CONFIG&&echo $CONFIG > ./src/config.json
+    
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
       - name: 'Working'
