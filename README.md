@@ -7,9 +7,10 @@ version 3: 基于 Github Actions 自动打卡
 
 # 使用说明  
 ## 0. 设置邮箱  
-### 0.2 依次点击  (并下拉)  
+### 可参考https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28  
+### 0.1 依次点击  (并下拉)  
 ![image](https://user-images.githubusercontent.com/68174279/149703183-a94db2e0-0ce9-43f4-a738-b60c5995698d.png)  
-### 0.1 设置  (需要发送短信)
+### 0.2 设置  (需要发送短信取得的授权码即为下面的邮箱密码emailPsw)
 ![image](https://user-images.githubusercontent.com/68174279/149703272-ebd284b6-a377-4c7f-9859-90f4819f2a76.png)  
 
 ## 1. fork仓库  
