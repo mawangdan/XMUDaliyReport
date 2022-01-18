@@ -1,4 +1,4 @@
-# XMUDaliyReport厦门大学健康打卡
+# XMUDaliyReport厦门大学健康打卡(仅供交流学习使用，不得用于打卡)
 xmu健康打卡（厦门大学健康打卡）（基于python爬虫与docker自动部署）
 
 version 1: js逆向,爬虫代码已完成  
