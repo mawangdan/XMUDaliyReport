@@ -14,11 +14,11 @@ version 3: 基于 Github Actions 自动打卡
 ![image](https://user-images.githubusercontent.com/68174279/149703272-ebd284b6-a377-4c7f-9859-90f4819f2a76.png)  
 
 ## 1. fork仓库  
-![image](https://user-images.githubusercontent.com/68174279/149702446-4dfe53b6-330f-48d2-a093-95e6ce930738.png) 
+![image](https://user-images.githubusercontent.com/68174279/149883079-3944ff23-4cbe-42e6-988e-f0fddc136b42.png)  
 ## 2. 添加secret  CONFIG  
 ### 2.1 找到secret  
 ![27c7598989acee9465a4cc2ac565a9d](https://user-images.githubusercontent.com/68174279/149702401-d6e58fab-7abb-483a-8136-60ef7bc82455.png)  
-### 2.2 添加
+### 2.2 添加(添加时一定要准确复制下面的代码段并进行修改)
 ![5837867f36e61102284147824281316](https://user-images.githubusercontent.com/68174279/149702307-ca622975-ac74-47bf-a6b1-aa6c22dada2b.png)  
 ### 2.3 上方为以下代码片段
 `  
