@@ -53,7 +53,7 @@ def sendEmail1(msgJson):
     server.quit()  # 关闭连接
 
 @sendEmail.register(tuple)
-def sendEmail2(msgString,flag):
+def sendEmail2(msgTuple):
     msgString, flag = msgTuple
     if(flag):
         info = msgString
