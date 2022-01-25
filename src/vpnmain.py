@@ -210,7 +210,7 @@ def MainFunction():
         instanceId) + '?vpn-12-o2-xmuxg.xmu.edu.cn'
     # 打卡
     resp = s.post(form_url, json=formData, headers=headers)
-    sendEmail(msgJson=resp.json())
+    sendEmail(resp.json())
 
 if __name__ == '__main__':
     # 加载配置
@@ -224,7 +224,7 @@ if __name__ == '__main__':
             #sleep 2 second
             time.sleep(2)
             if(n==9):
-                traceback.print_stack()
+                traceback.print_exc()
                 sendEmail((str(e) + traceback.format_exc(), False))
 
 
