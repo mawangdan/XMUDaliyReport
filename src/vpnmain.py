@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
+import time
 
 sendAddress = ''
 emailPsw = ''
@@ -44,6 +45,20 @@ def sendEmail(msgJson):
     server.sendmail(sendAddress, [receiveAddress, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
     server.quit()  # 关闭连接
 
+def sendEmail(msgString,flag):
+    if(flag):
+        info = msgString
+    else:
+        info = '打卡失败\n详细信息:'+str(msgString)
+    msg = MIMEText(info, 'plain', 'utf-8')  # 填写邮件内容
+    msg['From'] = formataddr(["厦门大学健康打卡", sendAddress])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+    msg['To'] = formataddr([receiveAddress, receiveAddress])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+    msg['Subject'] = "厦门大学健康打卡"  # 邮件的主题，也可以说是标题
+
+    server = smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器
+    server.login(sendAddress, emailPsw)  # 括号中对应的是发件人邮箱账号、邮箱授权码
+    server.sendmail(sendAddress, [receiveAddress, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+    server.quit()  # 关闭连接
 
 def encrypt(pwd, key):
     """
@@ -121,29 +136,28 @@ def injectPersonalData(formDataJson, personalDataList):
 
     return {"formData": list, "playerId": "owner"}
 
-
-if __name__ == '__main__':
-    # 加载配置
-    loadConfig()
-
+def MainFunction():
+    global sendAddress, emailPsw, receiveAddress, username, psw, vpnPsw
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
     }
     s = requests.session()
-    #vpn登录
-    responseVPN = s.get('http://webvpn.xmu.edu.cn/login',headers=headers)
+    # vpn登录
+    responseVPN = s.get('http://webvpn.xmu.edu.cn/login', headers=headers)
     HTMLVPN = BeautifulSoup(responseVPN.text, 'html.parser')
     captcha_id = HTMLVPN.find_all('input', attrs={'name': 'captcha_id'})[0].attrs['value']
-    VPNbody = { 'auth_type': 'local',
-                'username': username,
-                'sms_code': None,
-                    'password': vpnPsw,
-                'captcha':None,
-                    'needCaptcha': 'false',
-                'captcha_id': captcha_id}
-    s.post(url='http://webvpn.xmu.edu.cn/do-login',data=VPNbody,headers=headers)
-    response = s.get('http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421f9f352d23f3d7d1e7b0c9ce29b5b/authserver/login?service=https://xmuxg.xmu.edu.cn/login/cas/xmu',headers=headers)
-    HTML = BeautifulSoup(response.content, 'html.parser')#
+    VPNbody = {'auth_type': 'local',
+               'username': username,
+               'sms_code': None,
+               'password': vpnPsw,
+               'captcha': None,
+               'needCaptcha': 'false',
+               'captcha_id': captcha_id}
+    s.post(url='http://webvpn.xmu.edu.cn/do-login', data=VPNbody, headers=headers)
+    response = s.get(
+        'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421f9f352d23f3d7d1e7b0c9ce29b5b/authserver/login?service=https://xmuxg.xmu.edu.cn/login/cas/xmu',
+        headers=headers)
+    HTML = BeautifulSoup(response.content, 'html.parser')  #
     pwdDefaultEncryptSalt = HTML.find_all('input', attrs={'id': 'pwdDefaultEncryptSalt'})[0].attrs['value']
     lt = HTML.find_all('input', attrs={'name': 'lt'})[0].attrs['value']
     dllt = HTML.find_all('input', attrs={'name': 'dllt'})[0].attrs['value']
@@ -159,9 +173,13 @@ if __name__ == '__main__':
             'execution': execution,
             '_eventId': _eventId,
             'rmShown': rmShown}
-    s.post('http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421f9f352d23f3d7d1e7b0c9ce29b5b/authserver/login?service=https://xmuxg.xmu.edu.cn/login/cas/xmu', data=body,
-           headers=headers)
-    r1 = s.get('http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421e8fa5484207e705d6b468ca88d1b203b/api/app/214/business/now?vpn-12-o2-xmuxg.xmu.edu.cn&getFirst=true', headers=headers)
+    s.post(
+        'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421f9f352d23f3d7d1e7b0c9ce29b5b/authserver/login?service=https://xmuxg.xmu.edu.cn/login/cas/xmu',
+        data=body,
+        headers=headers)
+    r1 = s.get(
+        'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421e8fa5484207e705d6b468ca88d1b203b/api/app/214/business/now?vpn-12-o2-xmuxg.xmu.edu.cn&getFirst=true',
+        headers=headers)
     businessId = r1.json()['data'][0]['business']['id']
     print(r1.text)
     businessId = businessId
@@ -170,14 +188,33 @@ if __name__ == '__main__':
 
     # 获得个人信息
     r2Json = s.get(
-        'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421e8fa5484207e705d6b468ca88d1b203b/api/formEngine/business/' + str(businessId) + '/myFormInstance?vpn-12-o2-xmuxg.xmu.edu.cn').json()
+        'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421e8fa5484207e705d6b468ca88d1b203b/api/formEngine/business/' + str(
+            businessId) + '/myFormInstance?vpn-12-o2-xmuxg.xmu.edu.cn').json()
 
     # 注入个人信息
     formData = injectPersonalData(formDataJson, r2Json['data']['formData'])
 
     # 打卡post的url
     instanceId = r2Json['data']['id']
-    form_url = 'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421e8fa5484207e705d6b468ca88d1b203b/api/formEngine/formInstance/'+str(instanceId)+'?vpn-12-o2-xmuxg.xmu.edu.cn'
+    form_url = 'http://webvpn.xmu.edu.cn/https/77726476706e69737468656265737421e8fa5484207e705d6b468ca88d1b203b/api/formEngine/formInstance/' + str(
+        instanceId) + '?vpn-12-o2-xmuxg.xmu.edu.cn'
     # 打卡
     resp = s.post(form_url, json=formData, headers=headers)
     sendEmail(resp.json())
+
+if __name__ == '__main__':
+    # 加载配置
+    loadConfig()
+    #10次重试次数
+    for n in range(0,10):
+        try:
+            MainFunction()
+            break
+        except Exception as e:
+            #sleep 2 second
+            time.sleep(2)
+            if(n==9):
+                sendEmail(msgString=str(e),flag=False)
+
+
+
