@@ -1,4 +1,6 @@
 # coding=utf-8
+from functools import singledispatch
+
 import requests
 import re
 import execjs
@@ -29,7 +31,7 @@ def loadConfig():
     psw = configJson['psw']
     vpnPsw = configJson['vpnPsw']
 
-def sendEmail(msgJson):
+def sendEmail1(msgJson):
     try:
         stuName = msgJson['data']['owner']['name']
         info = stuName + '\n您已打卡成功'
@@ -45,7 +47,7 @@ def sendEmail(msgJson):
     server.sendmail(sendAddress, [receiveAddress, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
     server.quit()  # 关闭连接
 
-def sendEmail(msgString,flag):
+def sendEmail2(msgString,flag):
     if(flag):
         info = msgString
     else:
@@ -200,7 +202,7 @@ def MainFunction():
         instanceId) + '?vpn-12-o2-xmuxg.xmu.edu.cn'
     # 打卡
     resp = s.post(form_url, json=formData, headers=headers)
-    sendEmail(msgJson=resp.json())
+    sendEmail1(msgJson=resp.json())
 
 if __name__ == '__main__':
     # 加载配置
@@ -214,7 +216,7 @@ if __name__ == '__main__':
             #sleep 2 second
             time.sleep(2)
             if(n==9):
-                sendEmail(msgString=str(e),flag=False)
+                sendEmail2(flag=False,msgString=str(e))
 
 
 
