@@ -221,6 +221,7 @@ if __name__ == '__main__':
             MainFunction()
             break
         except Exception as e:
+            traceback.print_exc()
             #sleep 2 second
             time.sleep(2)
             if(n==9):
