@@ -10,6 +10,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
 import time
+import traceback
 
 sendAddress = ''
 emailPsw = ''
@@ -223,7 +224,8 @@ if __name__ == '__main__':
             #sleep 2 second
             time.sleep(2)
             if(n==9):
-                sendEmail((str(e), False))
+                traceback.print_stack()
+                sendEmail((str(e) + traceback.format_exc(), False))
 
 
 
