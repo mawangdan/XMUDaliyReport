@@ -200,7 +200,7 @@ def MainFunction():
         instanceId) + '?vpn-12-o2-xmuxg.xmu.edu.cn'
     # 打卡
     resp = s.post(form_url, json=formData, headers=headers)
-    sendEmail(resp.json())
+    sendEmail(msgJson=resp.json())
 
 if __name__ == '__main__':
     # 加载配置
