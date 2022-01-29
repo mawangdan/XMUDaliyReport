@@ -32,11 +32,6 @@ def loadConfig():
     psw = configJson['psw']
     vpnPsw = configJson['vpnPsw']
 
-@singledispatch
-def sendEmail(msg):
-    pass
-
-@sendEmail.register(str)
 def sendEmail1(msgJson):
     try:
         stuName = msgJson['data']['owner']['name']
@@ -53,7 +48,6 @@ def sendEmail1(msgJson):
     server.sendmail(sendAddress, [receiveAddress, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
     server.quit()  # 关闭连接
 
-@sendEmail.register(tuple)
 def sendEmail2(msgTuple):
     msgString, flag = msgTuple
     if(flag):
@@ -210,7 +204,7 @@ def MainFunction():
         instanceId) + '?vpn-12-o2-xmuxg.xmu.edu.cn'
     # 打卡
     resp = s.post(form_url, json=formData, headers=headers)
-    sendEmail(resp.json())
+    sendEmail1(resp.json())
 
 if __name__ == '__main__':
     # 加载配置
@@ -219,14 +213,13 @@ if __name__ == '__main__':
     for n in range(0,10):
         try:
             MainFunction()
-            break
         except Exception as e:
             traceback.print_exc()
             #sleep 2 second
             time.sleep(2)
             if(n==9):
                 traceback.print_exc()
-                sendEmail((str(e) + traceback.format_exc(), False))
+                sendEmail2((str(n)+":"+str(e) + traceback.format_exc(), False))
 
 
 
