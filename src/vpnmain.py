@@ -213,6 +213,7 @@ if __name__ == '__main__':
     for n in range(0,10):
         try:
             MainFunction()
+            break
         except Exception as e:
             traceback.print_exc()
             #sleep 2 second
