@@ -24,8 +24,9 @@ version 3: 基于 Github Actions 自动打卡
 ## 2. 添加secret  CONFIG  
 ### 2.1 找到secret  
 ![27c7598989acee9465a4cc2ac565a9d](https://user-images.githubusercontent.com/68174279/149702401-d6e58fab-7abb-483a-8136-60ef7bc82455.png)  
-### 2.2 添加(添加时一定要准确复制下面的代码段并进行修改)
-![image](https://user-images.githubusercontent.com/68174279/149906204-f9f30651-f663-42c6-958e-f4b6c7cc8ca5.png)    
+### 2.2 添加(添加时一定要准确复制下面的代码段并进行修改)  
+![1643630732(1)](https://user-images.githubusercontent.com/68174279/151791020-bfc3600c-51b2-4242-9e17-c9181c2ad9c4.png)  
+
 ### 2.3 上方为以下代码片段
 `  
 {  
