@@ -7,6 +7,10 @@ version 1: js逆向,爬虫代码已完成
 version 2: 增加dockerfile  
 version 3: 基于 Github Actions 自动打卡  
 
+# 此情况为添加secret  CONFIG 时格式出错
+![image](https://user-images.githubusercontent.com/68174279/151790352-94bf281a-8a57-454a-af5a-dc037d97ea4d.png)
+
+
 # 使用说明  
 ## 0. 设置邮箱  
 ### 可参考https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28  
