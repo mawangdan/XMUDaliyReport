@@ -209,15 +209,15 @@ def MainFunction():
 if __name__ == '__main__':
     # 加载配置
     loadConfig()
-    #10次重试次数
-    for n in range(0,10):
+    #20次重试次数
+    for n in range(0,20):
         try:
             MainFunction()
             break
         except Exception as e:
             traceback.print_exc()
             #sleep 2 second
-            time.sleep(2)
+            time.sleep(30)
             traceback.print_exc()
             sendEmail2((str(n) + ":" + str(e) + traceback.format_exc(), False))
 
