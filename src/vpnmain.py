@@ -217,10 +217,11 @@ if __name__ == '__main__':
         except Exception as e:
             traceback.print_exc()
             #sleep 2 second
-            time.sleep(120)
+            time.sleep(240)
             print("第"+str(n)+"次错误:")
             traceback.print_exc()
-            sendEmail2((str(n) + ":" + str(e) + traceback.format_exc(), False))
+            if(n==19):
+                sendEmail2((str(n) + ":" + str(e) + traceback.format_exc(), False))
 
 
 
