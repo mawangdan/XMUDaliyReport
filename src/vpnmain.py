@@ -32,9 +32,9 @@ def loadConfig():
     psw = configJson['psw']
     vpnPsw = configJson['vpnPsw']
 
-def sendEmail1(msgJson):
+def sendEmail1(msgJson,name):
     try:
-        stuName = msgJson['data']['owner']['name']
+        stuName = name
         info = stuName + '\n您已打卡成功'
     except:
         info = '打卡失败\n详细信息:' + str(msgJson)
@@ -204,7 +204,7 @@ def MainFunction():
         instanceId) + '?vpn-12-o2-xmuxg.xmu.edu.cn'
     # 打卡
     resp = s.post(form_url, json=formData, headers=headers)
-    sendEmail1(resp.json())
+    sendEmail1(resp.json(),r2Json['data']['owner']['name'])
 
 if __name__ == '__main__':
     # 加载配置
