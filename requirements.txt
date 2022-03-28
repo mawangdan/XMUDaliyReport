@@ -1,3 +1,4 @@
 beautifulsoup4==4.10.0
 PyExecJS==1.5.1
 requests==2.25.1
+fake-useragent==0.1.11
