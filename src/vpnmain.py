@@ -20,19 +20,22 @@ receiveAddress = ''
 username = ''
 psw = ''
 vpnPsw = ''
+uaList = []
 
 
 def loadConfig():
     with open('config.json', 'r', encoding='utf-8') as f:
         config = f.read()
     configJson = json.loads(config)
-    global sendAddress, emailPsw, receiveAddress, username, psw,vpnPsw
+    global sendAddress, emailPsw, receiveAddress, username, psw, vpnPsw, uaList
     sendAddress = configJson['sendAddress']
     emailPsw = configJson['emailPsw']
     receiveAddress = configJson['receiveAddress']
     username = configJson['username']
     psw = configJson['psw']
     vpnPsw = configJson['vpnPsw']
+    with open('user_agent.json', 'r') as fp:
+        uaList = json.load(fp)
 
 def sendEmail1(msgJson,name):
     try:
@@ -143,10 +146,10 @@ def injectPersonalData(formDataJson, personalDataList):
     return {"formData": list, "playerId": "owner"}
 
 def MainFunction():
-    global sendAddress, emailPsw, receiveAddress, username, psw, vpnPsw
-    ua = UserAgent()
+    global sendAddress, emailPsw, receiveAddress, username, psw, vpnPsw, uaList
+
     headers = {
-        'User-Agent': ua.random,
+        'User-Agent': uaList[int(username) % len(uaList)],
     }
     s = requests.session()
     # vpn登录
@@ -212,7 +215,7 @@ def MainFunction():
 if __name__ == '__main__':
     # 加载配置
     loadConfig()
-    time.sleep(random.randint(0,5)*60)
+    # time.sleep(random.randint(0,5)*60)
     #20次重试次数
     for n in range(0,20):
         try:
