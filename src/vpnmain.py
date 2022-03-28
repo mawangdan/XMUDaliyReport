@@ -12,6 +12,7 @@ from email.mime.text import MIMEText
 from email.utils import formataddr
 import time
 import traceback
+from fake_useragent import UserAgent
 
 sendAddress = ''
 emailPsw = ''
@@ -143,8 +144,9 @@ def injectPersonalData(formDataJson, personalDataList):
 
 def MainFunction():
     global sendAddress, emailPsw, receiveAddress, username, psw, vpnPsw
+    ua = UserAgent()
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.3'+str(random.randint(1,9)),
+        'User-Agent': ua.random,
     }
     s = requests.session()
     # vpn登录
