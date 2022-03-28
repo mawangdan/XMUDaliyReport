@@ -144,7 +144,7 @@ def injectPersonalData(formDataJson, personalDataList):
 def MainFunction():
     global sendAddress, emailPsw, receiveAddress, username, psw, vpnPsw
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.3'+str(random.ranint(1,9)),
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.3'+str(random.randint(1,9)),
     }
     s = requests.session()
     # vpn登录
@@ -210,7 +210,7 @@ def MainFunction():
 if __name__ == '__main__':
     # 加载配置
     loadConfig()
-    time.sleep(random.ranint(0,5)*60)
+    time.sleep(random.randint(0,5)*60)
     #20次重试次数
     for n in range(0,20):
         try:
