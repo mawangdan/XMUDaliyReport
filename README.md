@@ -1,6 +1,6 @@
 # 声明  
 ## 该项目仅用于学习和交流技术，请同学们按照自己实际情况打卡，造成的一切后果本人概不负责  
-# XMUDaliyReport厦门大学健康打卡
+# XMUDailyReport厦门大学健康打卡
 xmu健康打卡（厦门大学健康打卡）（基于python爬虫与docker自动部署）
 
 version 1: js逆向,爬虫代码已完成  
