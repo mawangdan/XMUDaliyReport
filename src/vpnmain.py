@@ -215,7 +215,6 @@ def MainFunction():
 if __name__ == '__main__':
     # 加载配置
     loadConfig()
-    time.sleep(random.randint(0,5)*60)
     #20次重试次数
     for n in range(0,20):
         try:
