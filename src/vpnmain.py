@@ -213,6 +213,7 @@ def MainFunction():
     sendEmail1(resp.json(),r2Json['data']['owner']['name'])
 
 if __name__ == '__main__':
+    time.sleep(random.randint(0,7)*60)
     # 加载配置
     loadConfig()
     #20次重试次数
