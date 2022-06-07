@@ -20,6 +20,8 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
-          git remote add mawang https://github.com/mawangdan/XMUDaliyReport.git
-          git pull mawang main --allow-unrelated-histories
+          git remote add mawangdan https://github.com/mawangdan/XMUDaliyReport.git
+          git push origin main
+          git fetch mawangdan
+          git merge mawangdan/main
           git push origin main
