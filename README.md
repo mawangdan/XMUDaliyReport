@@ -6,6 +6,7 @@ xmu健康打卡（厦门大学健康打卡）（基于python爬虫与docker自�
 version 1: js逆向,爬虫代码已完成  
 version 2: 增加dockerfile  
 version 3: 基于 Github Actions 自动打卡  
+version 4: 基于 Syn Fork 自动获取最新代码  
 
 # 此情况为添加secret  CONFIG 时格式出错
 ![image](https://user-images.githubusercontent.com/68174279/151790352-94bf281a-8a57-454a-af5a-dc037d97ea4d.png)
