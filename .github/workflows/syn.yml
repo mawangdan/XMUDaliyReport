@@ -16,6 +16,7 @@ jobs:
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
           git config user.name "auto merge Bwly999Rot"
           git config user.email "<>"
+          git config pull.rebase false
       - name: commit
         run: |
           # Stage the file, commit and push
