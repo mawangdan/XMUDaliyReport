@@ -20,6 +20,5 @@ jobs:
         run: |
           # Stage the file, commit and push
           git remote add mawang https://github.com/mawangdan/XMUDaliyReport.git
-          git fetch mawang
-          git merge mawang/main --allow-unrelated-histories
+          git pull mawang main --allow-unrelated-histories
           git push origin main
