@@ -1,0 +1,31 @@
+name: AutoCommit
+on:
+  schedule:
+    - cron:  '8 8 8 * *'
+    # scheduled at 00:00 every Monday
+
+  workflow_dispatch:  # click the button on Github repo!
+jobs:
+  date:
+    if: github.repository == 'mawangdan/XMUDaliyReport'
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the branch
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: save current date
+        run: |
+          # do some operation that changes a file in the git repo
+          date > AutoCommitDate.txt
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add AutoCommitDate.txt
+          git commit -m "auto commit date:$(date "+%Y-%m-%d %H:%M:%S")"
+          git push origin main
