@@ -12,10 +12,10 @@ jobs:
       - uses: tgymnich/fork-sync@v1.3
         with:
           owner: mawangdan
-          github_token: ${{ secrets.access_token1 }}
-          personal_token: ${{ secrets.access_token2 }}
-          head: master
-          base: master
+          github_token: ${{ secrets.access_token_other }}
+          personal_token: ${{ secrets.access_token_self }}
+          head: main
+          base: main
           merge_method: merge
           pr_title: Fork Sync
           auto_approve: true
