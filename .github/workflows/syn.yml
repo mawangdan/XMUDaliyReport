@@ -23,5 +23,5 @@ jobs:
           git remote add mawangdan https://github.com/mawangdan/XMUDaliyReport.git
           git push origin main
           git fetch mawangdan
-          git merge mawangdan/main --allow-unrelated-histories
+          git merge mawangdan/main --allow-unrelated-histories -s recursive
           git push origin main
