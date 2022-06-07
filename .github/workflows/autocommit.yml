@@ -19,10 +19,12 @@ jobs:
           # do some operation that changes a file in the git repo
           date > AutoCommitDate.txt
       - name: setup git config
+        env:
+          BOTEMAIL: ${{ secrets.BOTEMAIL }}
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
           git config user.name "Bwly999"
-          git config user.email "mawangdan@foxmail.com"
+          git config user.email $BOTEMAIL
       - name: commit
         run: |
           # Stage the file, commit and push
