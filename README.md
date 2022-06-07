@@ -67,7 +67,7 @@ version 4: 基于 Syn Fork 自动获取最新代码
 点击最下方绿色按钮  
 ![image](https://user-images.githubusercontent.com/61792863/172391338-15cd9225-8517-4bbf-b76b-52e416b0c1e7.png)  
 复制这串token  
-![image](https://user-images.githubusercontent.com/61792863/172393419-2c073ef3-ca09-4390-9241-c4393594b95e.png)  
+![image](https://user-images.githubusercontent.com/61792863/172395834-96e62bd0-2eea-4f41-8613-b19abfa6d5fa.png)  
 
 
 ### 5.5 添加secret  
