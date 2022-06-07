@@ -5,23 +5,17 @@ on:
 
   workflow_dispatch:  # click the button on Github repo!
 jobs:
-  date:
+  merge-upstream:
     runs-on: ubuntu-latest
-    steps:
-      # Checkout the branch
-      - name: checkout
+    steps: 
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: setup git config
-        run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "auto merge Bwly999Rot"
-          git config user.email "<>"
-          git config pull.rebase false
-      - name: commit
-        run: |
-          # Stage the file, commit and push
-          git remote add mawangdan https://github.com/mawangdan/XMUDaliyReport.git
-          git push origin main
-          git fetch mawangdan
-          git merge mawangdan/main --allow-unrelated-histories -s recursive
-          git push origin main
+        with:
+          ref: main             # set the branch to merge to
+          fetch-depth: 0 
+      - name: Merge Upstream
+        uses: exions/merge-upstream@v1
+        with:
+          upstream: mawangdan/XMUDaliyReport      # set the upstream repo
+          upstream-branch: main   # set the upstream branch to merge from
+          branch: main          # set the branch to merge to
