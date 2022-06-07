@@ -47,4 +47,4 @@ version 3: 基于 Github Actions 自动打卡
 
 ## 4. 测试运行  
 ![image](https://user-images.githubusercontent.com/68174279/149702965-48cae795-2d47-4db0-8060-fb46b6fe660f.png)
-test1
+test2
