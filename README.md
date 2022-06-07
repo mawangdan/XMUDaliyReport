@@ -60,31 +60,31 @@ version 4: 基于 Syn Fork 自动获取最新代码
 ![image](https://user-images.githubusercontent.com/61792863/172390639-72b6fed7-6621-4c6a-bfa6-22cd932fa9cf.png)
 ![image](https://user-images.githubusercontent.com/61792863/172390721-7c023700-fdea-4eda-b8da-e73771c10364.png)
 
-### 5.4 生成token配置
-在Note中取名(名字任取)
-将expiration改为no expiratioin
-将下方scopes全部选中
-点击最下方绿色按钮
-![image](https://user-images.githubusercontent.com/61792863/172391338-15cd9225-8517-4bbf-b76b-52e416b0c1e7.png)
-复制这串token
-![image](https://user-images.githubusercontent.com/61792863/172393419-2c073ef3-ca09-4390-9241-c4393594b95e.png)
+### 5.4 生成token配置  
+在Note中取名(名字任取)  
+将expiration改为no expiratioin  
+将下方scopes全部选中  
+点击最下方绿色按钮  
+![image](https://user-images.githubusercontent.com/61792863/172391338-15cd9225-8517-4bbf-b76b-52e416b0c1e7.png)  
+复制这串token  
+![image](https://user-images.githubusercontent.com/61792863/172393419-2c073ef3-ca09-4390-9241-c4393594b95e.png)  
 
 
-### 5.5 添加secret
-退回首页，选择Settings,与上文类似不再截图
-为Actions secrets命名，名字必须是access_token_self
-![image](https://user-images.githubusercontent.com/61792863/172392824-083c5141-3d5b-4ea1-b02a-92dd6dc255c0.png)
-将上文中复制的token粘贴到Actions secrets的value中
-![image](https://user-images.githubusercontent.com/61792863/172393785-3a4b0b25-f808-4cf8-a765-658122d2a7d8.png)
+### 5.5 添加secret  
+退回首页，选择Settings,与上文类似不再截图  
+为Actions secrets命名，名字必须是access_token_self  
+![image](https://user-images.githubusercontent.com/61792863/172392824-083c5141-3d5b-4ea1-b02a-92dd6dc255c0.png)  
+将上文中复制的token粘贴到Actions secrets的value中  
+![image](https://user-images.githubusercontent.com/61792863/172393785-3a4b0b25-f808-4cf8-a765-658122d2a7d8.png)  
 
-### 5.6 开启Actions(与上文类似，不再赘述）
+### 5.6 开启Actions(与上文类似，不再赘述）  
 
-### 5.7 修改代码
-找到synfork.yml(图中有显示位置)
-将红框内的代码去掉注释(下图为已经去掉注释的效果)
-![image](https://user-images.githubusercontent.com/61792863/172394595-18c41861-3caf-488b-b253-383ad3f5c495.png)
+### 5.7 修改代码  
+找到synfork.yml(图中有显示位置)  
+将红框内的代码去掉注释(下图为已经去掉注释的效果)  
+![image](https://user-images.githubusercontent.com/61792863/172394595-18c41861-3caf-488b-b253-383ad3f5c495.png)  
 
-## 6 测试运行
+## 6 测试运行  
 
 
 
