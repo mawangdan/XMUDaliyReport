@@ -78,11 +78,7 @@ version 4: 基于 Syn Fork 自动获取最新代码
 ![image](https://user-images.githubusercontent.com/61792863/172393785-3a4b0b25-f808-4cf8-a765-658122d2a7d8.png)  
 
 ### 5.6 开启Actions(与上文类似，不再赘述）  
-
-### 5.7 修改代码  
-找到synfork.yml(图中有显示位置)  
-将红框内的代码去掉注释(下图为已经去掉注释的效果)  
-![image](https://user-images.githubusercontent.com/61792863/172394595-18c41861-3caf-488b-b253-383ad3f5c495.png)  
+![image](https://user-images.githubusercontent.com/68174279/172399455-bb6f50eb-d2c1-4799-a587-4d792589d12b.png)
 
 ## 6 测试运行  
 
