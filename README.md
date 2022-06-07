@@ -49,7 +49,7 @@ version 4: 基于 Syn Fork 自动获取最新代码
 ## 4. 测试运行  
 ![image](https://user-images.githubusercontent.com/68174279/149702965-48cae795-2d47-4db0-8060-fb46b6fe660f.png)
 
-## 5. 自动更新
+## 5. 自动更新（可选项）
 ### 5.1 点击settings
 ![image](https://user-images.githubusercontent.com/61792863/172390223-dcf2a71c-d3c6-4864-bd9d-ffd1944dfff8.png)
 
