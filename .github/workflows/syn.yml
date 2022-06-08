@@ -1,0 +1,28 @@
+name: syn
+on:
+  schedule:
+    - cron:  '0 8 * * *'
+
+  workflow_dispatch:  # click the button on Github repo!
+jobs:
+  date:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the branch
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "auto merge Bwly999Rot"
+          git config user.email "<>"
+          git config pull.rebase false
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git remote add mawangdan https://github.com/mawangdan/XMUDaliyReport.git
+          git fetch mawangdan
+          git status
+          git checkout main
+          git merge mawangdan/main --strategy-option theirs --allow-unrelated-histories
+          git push origin main
