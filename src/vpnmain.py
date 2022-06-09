@@ -224,7 +224,7 @@ if __name__ == '__main__':
         except Exception as e:
             traceback.print_exc()
             #sleep 2 second
-            time.sleep(240)
+            time.sleep(60)
             print("第"+str(n)+"次错误:")
             traceback.print_exc()
             if(n==19):
